@@ -13,9 +13,28 @@ public class PrinterTest {
     }
 
     @Test
-    public void printTest(){
-        assertEquals(4, printer.print(2, 3));
+    public void printerHasSheets(){
+        assertEquals(10, printer.getSheets());
     }
+
+    @Test
+    public void printTest(){
+        printer.print(4, 2);
+        assertEquals(2, printer.getSheets());
+    }
+
+    @Test
+    public void printTestOverCapacity(){
+        assertEquals(0, printer.print(20, 10));
+    }
+
+    @Test
+    public void TonerDecreaseTest(){
+        printer.print(4, 2);
+        assertEquals(7, printer.getToner());
+    }
+
+
 
 
 }
